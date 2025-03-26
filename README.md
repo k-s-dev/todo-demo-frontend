@@ -1,6 +1,6 @@
 # Links
 
-- [Todo App: frontend]()
+- [Todo App: frontend](https://todo-demo-frontend.vercel.app/)
 - [Todo App: api](https://ksdev.pythonanywhere.com/api/docs/)
   - [code repo](https://github.com/k-s-dev/todo-demo-backend)
 
