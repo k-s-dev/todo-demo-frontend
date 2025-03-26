@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { TagFormKeys, TagFormState } from "./definitions";
 import { Workspace } from "../workspace/definitions";
@@ -29,12 +28,6 @@ export function FormContent({
     <section id={`${formId}-container`} className="flex flex-col my-2 gap-2">
       <section id={`${formId}-inputs`} className="flex flex-col gap-2">
         <InputName formState={formState} formId={formId} disabled={disabled} />
-        <Separator />
-        <InputDescription
-          formState={formState}
-          formId={formId}
-          disabled={disabled}
-        />
         <Separator />
         <InputWorkspace
           formState={formState}
@@ -166,48 +159,6 @@ export function InputName({
         formState={formState}
       />
     </>
-  );
-}
-
-export function InputDescription({
-  formState,
-  formId,
-  disabled = false,
-}: {
-  formState: TagFormState;
-  formId: string;
-  disabled: boolean;
-}) {
-  const inputName = "description";
-  const inputId = `${formId}-input-${inputName}`;
-  const labelText = "Description";
-  const placeholder = "Description ...";
-
-  return (
-    <article
-      id={`${inputId}-article`}
-      className="flex flex-col md:items-center md:flex-row gap-2"
-    >
-      <label htmlFor={`${inputId}`} className="w-48">
-        {labelText}
-      </label>
-      <Textarea
-        id={inputId}
-        form={formId}
-        name={inputName}
-        placeholder={placeholder}
-        disabled={disabled}
-        defaultValue={formState?.data?.description}
-        rows={2}
-        className="md:w-2/3"
-      />
-      {/* errors */}
-      <FieldError
-        inputId={inputId}
-        inputName={inputName}
-        formState={formState}
-      />
-    </article>
   );
 }
 

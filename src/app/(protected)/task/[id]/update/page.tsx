@@ -4,7 +4,6 @@ import { notFound, redirect } from "next/navigation";
 
 import { Separator } from "@/components/ui/separator";
 import { Project } from "@/data/project/definitions";
-import FormProjectUpdate from "@/data/project/update/Form";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Task, TaskFormConfig } from "@/data/task/definitions";

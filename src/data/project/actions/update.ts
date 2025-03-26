@@ -58,7 +58,7 @@ export async function updateProjectVisibility(
       apiSubmissionData,
     );
     console.log(response)
-  } catch (error) {
+  } catch (error) { // eslint-disable-line
     return {
       data: apiSubmissionData,
       message: `Server error: Failed to create resource.`,

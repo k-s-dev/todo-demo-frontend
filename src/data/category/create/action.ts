@@ -41,7 +41,7 @@ export async function action(
 
   try {
     response = await apiCreate<CategoryApiType>(endpoint, userId, apiSubmissionData);
-  } catch (error) {
+  } catch (error) { // eslint-disable-line
     return {
       data: stateFormData,
       message: `Server error: failed to create workspace.`,

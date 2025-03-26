@@ -18,14 +18,15 @@ export async function action(
   formData: FormData,
 ): Promise<TaskFormState> {
   // retreive data
-  let rawFormData = Object.fromEntries(formData);
+  let rawFormData: { [k: string]: FormDataEntryValue | FormDataEntryValue[] } =
+    Object.fromEntries(formData);
   const tags = [...formData.getAll("tags")];
   rawFormData = {
     ...rawFormData,
     tags: tags,
-    is_visible: rawFormData?.is_visible || false,
+    is_visible:
+      rawFormData?.is_visible || (false as unknown as FormDataEntryValue),
   };
-
 
   // Validate form (using Zod)
   const validatedFormData = TaskFormSchema.safeParse(rawFormData);
@@ -81,6 +82,7 @@ export async function action(
       task.id,
       apiSubmissionData,
     );
+    // eslint-disable-next-line
   } catch (error) {
     return {
       data: rawFormData,

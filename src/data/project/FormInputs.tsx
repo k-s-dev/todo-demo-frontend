@@ -313,7 +313,7 @@ export function FieldDate({
           id={inputId}
           form={formConfig.formId}
           name={inputName}
-          defaultValue={defaultValue}
+          defaultValue={defaultValue?.toString()}
           placeholder={placeholder}
           disabled={disabled}
           readOnly={readonly}
@@ -871,7 +871,7 @@ export function FieldEstimatedEffort({
       formState={formState}
       inputId={inputId}
       inputName={inputName}
-      defaultValue={defaultValue}
+      defaultValue={defaultValue?.toString()}
       disabled={disabled}
       readonly={readonly}
       labelText={labelText}
@@ -903,7 +903,7 @@ export function FieldActualEffort({
       formState={formState}
       inputId={inputId}
       inputName={inputName}
-      defaultValue={defaultValue}
+      defaultValue={defaultValue?.toString()}
       disabled={disabled}
       readonly={readonly}
       labelText={labelText}

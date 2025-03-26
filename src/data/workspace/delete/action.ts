@@ -5,7 +5,7 @@ import {
   Workspace,
   WorkspaceFormState,
 } from "../definitions";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function action(
@@ -23,7 +23,7 @@ export async function action(
       userId,
       workspace.id.toString(),
     );
-  } catch (error) {
+  } catch (error) { // eslint-disable-line
     return {
       message: `Server error: failed to delete workspace.`,
     };

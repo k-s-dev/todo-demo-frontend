@@ -23,8 +23,6 @@ export default function FormTagUpdate({
 
   const initialFormData = {
     name: tag.name,
-    description: tag.description,
-    order: tag.order,
     workspace: tag.workspace,
   };
 

@@ -331,7 +331,7 @@ export function FieldDate({
           id={inputId}
           form={formConfig.formId}
           name={inputName}
-          defaultValue={defaultValue}
+          defaultValue={defaultValue as undefined}
           placeholder={placeholder}
           disabled={disabled}
           readOnly={readonly}

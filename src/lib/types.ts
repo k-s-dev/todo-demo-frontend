@@ -1,10 +1,5 @@
 import { fetchUserDataConfig } from "@/data/apiUserData";
 import { Category } from "@/data/category/definitions";
-import { Priority } from "@/data/priority/definitions";
-import { Project } from "@/data/project/definitions";
-import { Status } from "@/data/status/definitions";
-import { Tag } from "@/data/tag/definitions";
-import { Task } from "@/data/task/definitions";
 import { Workspace } from "@/data/workspace/definitions";
 
 export interface LinkType {

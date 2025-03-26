@@ -11,10 +11,11 @@ export async function action(
 ): Promise<TaskFormState> {
   // try submitting data to backend
   let response;
-  const endpoint: Endpoint = "task"
+  const endpoint: Endpoint = "task";
 
   try {
     response = await apiDelete(endpoint, userId, task.id.toString());
+    // eslint-disable-next-line
   } catch (error) {
     return {
       data: {},

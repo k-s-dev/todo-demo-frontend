@@ -5,9 +5,8 @@ import {
   WorkspaceFormSchema,
   WorkspaceFormState,
 } from "../definitions";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
-import { fetchAllUserObjects } from "@/data/apiUserData";
 import { createWorkspaceConfigTemplate } from "../actions/createDefaultConfig";
 import { apiCreate, Endpoint } from "@/data/apiCRUD";
 import { baseUrl, getBaseOptions } from "@/lib/apiConfig";

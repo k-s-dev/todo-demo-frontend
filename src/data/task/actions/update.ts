@@ -58,7 +58,7 @@ export async function updateTaskVisibility(
       task.id,
       apiSubmissionData,
     );
-  } catch (error) {
+  } catch (error) { // eslint-disable-line
     return {
       data: apiSubmissionData,
       message: `Server error: Failed to create resource.`,

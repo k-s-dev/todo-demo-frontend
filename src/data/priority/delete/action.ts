@@ -15,7 +15,7 @@ export async function action(
 
   try {
     response = await apiDelete(endpoint, userId, priority.id.toString());
-  } catch (error) {
+  } catch (error) { // eslint-disable-line
     return {
       message: `Server error: failed to delete resource.`,
     };

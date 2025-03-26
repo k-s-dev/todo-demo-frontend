@@ -28,7 +28,7 @@ export async function createStatusesTemplate(
     let response;
     try {
       response = await apiCreate(endpoint, userId, obj);
-    } catch (error) {
+    } catch (error) { // eslint-disable-line
       throw new Error("Failed to create statuses from template.");
     }
 
@@ -55,7 +55,7 @@ export async function createPrioritiesTemplate(
     let response;
     try {
       response = await apiCreate(endpoint, userId, obj);
-    } catch (error) {
+    } catch (error) { // eslint-disable-line
       throw new Error("Failed to create statuses from template.");
     }
 

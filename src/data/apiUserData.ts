@@ -3,10 +3,8 @@
 import { baseUrl, getBaseOptions } from "@/lib/apiConfig";
 import { Category as Category } from "./category/definitions";
 import { Priority as Priority } from "./priority/definitions";
-import { Project } from "./project/definitions";
 import { Status } from "./status/definitions";
 import { Tag } from "./tag/definitions";
-import { Task } from "./task/definitions";
 import { Workspace } from "./workspace/definitions";
 
 export async function fetchUserDataConfig(userId: string) {
