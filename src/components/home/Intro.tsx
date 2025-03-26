@@ -14,7 +14,7 @@ export default function Intro() {
         <p className="max-w-xs mt-8 text-lg leading-8 text-muted-foreground">
           To view and test all features, sign in using dummy account (
           <i>
-            username: <b>demo</b>, password: <b>demo</b>
+            username: <b>demo</b>, password: <b>12345678</b>
           </i>
           ) or register to sign in.
         </p>
