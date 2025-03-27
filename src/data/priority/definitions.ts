@@ -10,21 +10,10 @@ export const PriorityFormSchema = z.object({
     }),
   description: z.string().optional(),
   workspace: z.coerce.number().int(),
-  order: z.number().int().optional(),
+  order: z.coerce.number().int(),
 });
 
-export const PriorityApiSchema = z.object({
-  name: z
-    .string({
-      required_error: "Name is required.",
-    })
-    .min(1, {
-      message: "Name cannot be empty.",
-    }),
-  description: z.string().optional(),
-  workspace: z.coerce.number().int(),
-  order: z.number().int().optional(),
-});
+export const PriorityApiSchema = PriorityFormSchema;
 
 export const PrioritySchema = PriorityApiSchema.extend({
   id: z.number().int(),

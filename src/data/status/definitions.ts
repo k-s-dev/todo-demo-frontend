@@ -10,22 +10,10 @@ export const StatusFormSchema = z.object({
     }),
   description: z.string().optional(),
   workspace: z.coerce.number().int(),
-  order: z.number().int().optional(),
+  order: z.coerce.number().int(),
 });
 
-export const StatusApiSchema = z.object({
-  name: z
-    .string({
-      required_error: "Name is required.",
-    })
-    .min(1, {
-      message: "Name cannot be empty.",
-    }),
-  description: z.string().optional(),
-  workspace: z.coerce.number().int(),
-  order: z.number().int().optional(),
-});
-
+export const StatusApiSchema = StatusFormSchema;
 export const StatusObjectSchema = StatusApiSchema.extend({
   id: z.number().int(),
   created_at: z.date().optional(),

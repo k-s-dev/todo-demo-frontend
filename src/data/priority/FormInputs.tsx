@@ -36,12 +36,19 @@ export function FormContent({
           disabled={disabled}
         />
         <Separator />
-        <InputWorkspace
-          formState={formState}
-          formId={formId}
-          disabled={true}
-          workspaces={workspaces}
-        />
+        <section className="flex flex-col sm:flex-row justify-between gap-2">
+          <InputWorkspace
+            formState={formState}
+            formId={formId}
+            disabled={true}
+            workspaces={workspaces}
+          />
+          <InputOrder
+            formState={formState}
+            formId={formId}
+            disabled={disabled}
+          />
+        </section>
       </section>
       <Separator className="h-2!" />
       <FormErrors formState={formState} />
@@ -224,7 +231,11 @@ export function InputWorkspace({
 }) {
   const inputName = "workspace";
   const inputId = `${formId}-input-${inputName}`;
-  const labelText = "Workspace";
+  const labelText = (
+    <>
+      Workspace<sup>*</sup>
+    </>
+  );
   const workspace = workspaces?.find(
     (obj) => obj.id.toString() === formState.data?.workspace?.toString(),
   );
@@ -232,10 +243,7 @@ export function InputWorkspace({
   const placeholder = "-------";
 
   return (
-    <article
-      id={`${inputId}-article`}
-      className="flex flex-row items-center gap-4"
-    >
+    <article id={`${inputId}-article`} className="flex items-center gap-4">
       <label htmlFor={`${inputId}`} className="">
         {labelText}
       </label>
@@ -264,5 +272,57 @@ export function InputWorkspace({
         formState={formState}
       />
     </article>
+  );
+}
+
+export function InputOrder({
+  formState,
+  formId,
+  disabled = false,
+  includeLabel = true,
+}: {
+  formState: PriorityFormState;
+  formId: string;
+  disabled: boolean;
+  includeLabel?: boolean;
+}) {
+  const inputName = "order";
+  const inputId = `${formId}-input-${inputName}`;
+  const labelText = (
+    <>
+      Order<sup>*</sup>
+    </>
+  );
+  const placeholder = "1, 2 or 3";
+
+  return (
+    <>
+      <article id={`${inputId}-article`} className="flex items-center gap-4">
+        {includeLabel && (
+          <label htmlFor={`${inputId}`} className="w-48">
+            {labelText}
+          </label>
+        )}
+
+        <Input
+          id={inputId}
+          form={formId}
+          name={inputName}
+          disabled={disabled}
+          defaultValue={formState?.data?.order}
+          placeholder={placeholder}
+          aria-describedby={`${inputId}-error`}
+          type="number"
+          min={1}
+          max={3}
+        />
+      </article>
+      {/* errors */}
+      <FieldError
+        inputId={inputId}
+        inputName={inputName}
+        formState={formState}
+      />
+    </>
   );
 }
