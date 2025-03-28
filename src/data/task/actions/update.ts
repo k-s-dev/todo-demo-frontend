@@ -45,7 +45,6 @@ export async function updateTaskVisibility(
       delete apiSubmissionData[key];
     }
   }
-  console.log(task)
 
   // try submitting data to backend
   let response;

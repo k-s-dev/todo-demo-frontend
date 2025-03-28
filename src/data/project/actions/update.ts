@@ -57,7 +57,6 @@ export async function updateProjectVisibility(
       project.id,
       apiSubmissionData,
     );
-    console.log(response)
   } catch (error) { // eslint-disable-line
     return {
       data: apiSubmissionData,
