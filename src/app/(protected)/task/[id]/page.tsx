@@ -36,10 +36,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   const formConfig: TaskFormConfig = {
     userDataConfig,
-    workspace,
-    category,
-    project,
-    disableField: { form: true },
+    selection: { workspace, category, project },
+    disable: { form: true },
   };
 
   return (

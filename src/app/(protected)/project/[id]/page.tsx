@@ -31,9 +31,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   const formConfig: ProjectFormConfig = {
     userDataConfig,
-    workspace,
-    category,
-    disableField: { form: true },
+    selection: { workspace, category },
+    disable: { form: true },
   };
 
   return (

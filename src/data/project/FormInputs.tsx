@@ -41,23 +41,23 @@ export function FormContent({
   let statuses = formConfig.userDataConfig?.statuses;
   let tags = formConfig.userDataConfig?.tags;
 
-  if (formConfig.workspace) {
-    workspaces = workspaces?.filter((w) => w.id === formConfig.workspace?.id);
+  if (formConfig.selection?.workspace) {
+    workspaces = workspaces?.filter((w) => w.id === formConfig.selection?.workspace?.id);
     categories = categories?.filter(
-      (c) => c.workspace === formConfig.workspace?.id,
+      (c) => c.workspace === formConfig.selection?.workspace?.id,
     );
     priorities = priorities?.filter(
-      (o) => o.workspace === formConfig.workspace?.id,
+      (o) => o.workspace === formConfig.selection?.workspace?.id,
     );
     statuses = statuses?.filter(
-      (o) => o.workspace === formConfig.workspace?.id,
+      (o) => o.workspace === formConfig.selection?.workspace?.id,
     );
-    tags = tags?.filter((o) => o.workspace === formConfig.workspace?.id);
-    projects = projects.filter((o) => o.workspace === formConfig.workspace?.id);
+    tags = tags?.filter((o) => o.workspace === formConfig.selection?.workspace?.id);
+    projects = projects.filter((o) => o.workspace === formConfig.selection?.workspace?.id);
   }
-  if (formConfig.category) {
-    categories = categories?.filter((c) => c.id === formConfig.category?.id);
-    projects = projects.filter((o) => o.category === formConfig.category?.id);
+  if (formConfig.selection?.category) {
+    categories = categories?.filter((c) => c.id === formConfig.selection?.category?.id);
+    projects = projects.filter((o) => o.category === formConfig.selection?.category?.id);
   }
 
   return (
@@ -135,7 +135,7 @@ export function FormContent({
       <FormErrors formState={formState} />
       <SubmitButton
         isPending={isPending}
-        disabled={formConfig.disableField?.form || false}
+        disabled={formConfig.disable?.form || false}
       />
     </section>
   );
@@ -286,16 +286,16 @@ export function FieldDate({
   let disabled = false;
   let readonly = false;
   if (
-    formConfig.disableField &&
-    typeof formConfig.disableField[objectKey] === "boolean"
+    formConfig.disable &&
+    typeof formConfig.disable[objectKey] === "boolean"
   ) {
-    disabled = formConfig.disableField[objectKey] || false;
+    disabled = formConfig.disable[objectKey] || false;
   }
   if (
-    formConfig.readonlyField &&
-    typeof formConfig.readonlyField[objectKey] === "boolean"
+    formConfig.readonly &&
+    typeof formConfig.readonly[objectKey] === "boolean"
   ) {
-    readonly = formConfig.readonlyField[objectKey] || false;
+    readonly = formConfig.readonly[objectKey] || false;
   }
 
   return (
@@ -390,9 +390,9 @@ export function FieldTitle({
 }) {
   const inputName = "title";
   const defaultValue = formState?.data?.title;
-  const disabled = formConfig.disableField?.title || false;
-  const readonly = formConfig.readonlyField?.title || false;
-  const placeholder = formConfig.disableField?.title ? "" : "Title...";
+  const disabled = formConfig.disable?.title || false;
+  const readonly = formConfig.readonly?.title || false;
+  const placeholder = formConfig.disable?.title ? "" : "Title...";
   const labelText = (
     <>
       Title<sup>*</sup>
@@ -444,10 +444,10 @@ export function FieldDetail({
 }) {
   const inputName = "detail";
   const defaultValue = formState?.data?.detail;
-  const disabled = formConfig.disableField?.detail || false;
-  const readonly = formConfig.readonlyField?.detail || false;
+  const disabled = formConfig.disable?.detail || false;
+  const readonly = formConfig.readonly?.detail || false;
   const labelText = "Detail";
-  const placeholder = formConfig.disableField?.detail ? "" : "Detail...";
+  const placeholder = formConfig.disable?.detail ? "" : "Detail...";
   const inputId = `${formConfig.formId}-input-${inputName}`;
 
   return (
@@ -513,7 +513,7 @@ export function FieldIsVisible({
           form={formConfig.formId}
           name={inputName}
           defaultChecked={formState?.data?.is_visible}
-          disabled={formConfig.disableField?.is_visible || false}
+          disabled={formConfig.disable?.is_visible || false}
           aria-describedby={`${inputId}-error`}
         />
       </article>
@@ -538,8 +538,8 @@ export function FieldWorkspace({
 }) {
   // initial selected option is controlled using formState
   let defaultValue = formState.data.workspace?.toString();
-  if (formConfig.workspace) {
-    defaultValue = formConfig.workspace.id.toString();
+  if (formConfig.selection?.workspace) {
+    defaultValue = formConfig.selection?.workspace.id.toString();
   }
   return (
     <FieldSelect
@@ -547,7 +547,7 @@ export function FieldWorkspace({
       formConfig={formConfig}
       inputName="workspace"
       defaultValue={defaultValue}
-      disabled={formConfig.disableField?.workspace}
+      disabled={formConfig.disable?.workspace}
       required
     >
       {workspaces.map((obj) => (
@@ -570,8 +570,8 @@ export function FieldCategory({
 }) {
   // initial selected option is controlled using formState
   let defaultValue = formState.data.category?.toString();
-  if (formConfig.category) {
-    defaultValue = formConfig.category.id.toString();
+  if (formConfig.selection?.category) {
+    defaultValue = formConfig.selection?.category.id.toString();
   }
   return (
     <FieldSelect
@@ -579,7 +579,7 @@ export function FieldCategory({
       formConfig={formConfig}
       inputName="category"
       defaultValue={defaultValue}
-      disabled={formConfig.disableField?.category}
+      disabled={formConfig.disable?.category}
       required
     >
       {categories.map((obj) => {
@@ -590,7 +590,7 @@ export function FieldCategory({
           // for ts error as find can return undefined
           return (
             <SelectItem key={obj.id} value={obj.id.toString()}>
-              {!formConfig.workspace
+              {!formConfig.selection?.workspace
                 ? `${workspace.name}: ${obj.name}`
                 : obj.name}
             </SelectItem>
@@ -628,9 +628,9 @@ export function FieldParent({
       // for ts error as find can return undefined
       return (
         <SelectItem key={obj.id} value={obj.id.toString()}>
-          {!formConfig.workspace && !formConfig.category
+          {!formConfig.selection?.workspace && !formConfig.selection?.category
             ? `ws: ${workspace.name} | cat: ${category.name} | ${obj.title}`
-            : formConfig.workspace && !formConfig.category
+            : formConfig.selection?.workspace && !formConfig.selection?.category
               ? `cat: ${category.name} | ${obj.title}`
               : obj.title}
         </SelectItem>
@@ -643,7 +643,7 @@ export function FieldParent({
       formConfig={formConfig}
       inputName="parent"
       defaultValue={defaultValue}
-      disabled={formConfig.disableField?.parent}
+      disabled={formConfig.disable?.parent}
     >
       {children}
     </FieldSelect>
@@ -667,7 +667,7 @@ export function FieldPriority({
       formConfig={formConfig}
       inputName="priority"
       defaultValue={defaultValue}
-      disabled={formConfig.disableField?.priority}
+      disabled={formConfig.disable?.priority}
     >
       {priorities.map((obj) => {
         const workspace = formConfig.userDataConfig?.workspaces.find(
@@ -676,7 +676,7 @@ export function FieldPriority({
         if (workspace) {
           return (
             <SelectItem key={obj.id} value={obj.id.toString()}>
-              {!formConfig.workspace
+              {!formConfig.selection?.workspace
                 ? `${workspace.name}: ${obj.name}`
                 : obj.name}
             </SelectItem>
@@ -698,7 +698,7 @@ export function FieldStatus({
 }) {
   // initial selected option is controlled using formState
   const defaultValue = formState.data.status?.toString();
-  const disabled = formConfig.disableField?.status;
+  const disabled = formConfig.disable?.status;
 
   return (
     <FieldSelect
@@ -715,7 +715,7 @@ export function FieldStatus({
         if (workspace) {
           return (
             <SelectItem key={obj.id} value={obj.id.toString()}>
-              {!formConfig.workspace
+              {!formConfig.selection?.workspace
                 ? `${workspace.name}: ${obj.name}`
                 : obj.name}
             </SelectItem>
@@ -755,7 +755,7 @@ export function FieldTag({
       <MultipleSelect
         id={inputId}
         name={inputName}
-        disabled={formConfig.disableField?.tags}
+        disabled={formConfig.disable?.tags}
         form={formConfig.formId}
         initialValue={defaultValue}
       >
@@ -766,7 +766,7 @@ export function FieldTag({
           if (workspace) {
             return (
               <option key={obj.id} value={obj.id.toString()}>
-                {!formConfig.workspace
+                {!formConfig.selection?.workspace
                   ? `${workspace.name}: ${obj.name}`
                   : obj.name}
               </option>
@@ -857,11 +857,11 @@ export function FieldEstimatedEffort({
 }) {
   const inputName = "estimated_effort";
   const defaultValue = formState?.data?.estimated_effort;
-  const disabled = formConfig.disableField?.estimated_effort || false;
-  const readonly = formConfig.readonlyField?.estimated_effort || false;
+  const disabled = formConfig.disable?.estimated_effort || false;
+  const readonly = formConfig.readonly?.estimated_effort || false;
   const inputId = `${formConfig.formId}-input-${inputName}`;
   const labelText = "Estamated effort (days)";
-  const placeholder = formConfig.disableField?.estimated_effort
+  const placeholder = formConfig.disable?.estimated_effort
     ? ""
     : "Estimated effort (in days) ...";
 
@@ -889,11 +889,11 @@ export function FieldActualEffort({
 }) {
   const inputName = "actual_effort";
   const defaultValue = formState?.data?.actual_effort;
-  const disabled = formConfig.disableField?.actual_effort || false;
-  const readonly = formConfig.readonlyField?.actual_effort || false;
+  const disabled = formConfig.disable?.actual_effort || false;
+  const readonly = formConfig.readonly?.actual_effort || false;
   const inputId = `${formConfig.formId}-input-${inputName}`;
   const labelText = "Actual effort (days)";
-  const placeholder = formConfig.disableField?.actual_effort
+  const placeholder = formConfig.disable?.actual_effort
     ? ""
     : "Actual effort (in days) ...";
 

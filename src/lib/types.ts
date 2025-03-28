@@ -1,5 +1,6 @@
 import { fetchUserDataConfig } from "@/data/apiUserData";
 import { Category } from "@/data/category/definitions";
+import { Project } from "@/data/project/definitions";
 import { Workspace } from "@/data/workspace/definitions";
 
 export interface LinkType {
@@ -24,9 +25,12 @@ export type FormFieldsIndicator<Form> = {
 export interface FormConfig<FormFieldsIndicator> {
   userDataConfig: UserDataConfig;
   formId?: string;
-  workspace?: Workspace;
-  category?: Category;
-  disableField?: FormFieldsIndicator;
-  readonlyField?: FormFieldsIndicator;
+  selection?: {
+    workspace?: Workspace;
+    category?: Category;
+    project?: Project;
+  };
+  disable?: FormFieldsIndicator;
+  readonly?: FormFieldsIndicator;
   excludeLabel?: FormFieldsIndicator;
 }

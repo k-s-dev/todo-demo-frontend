@@ -51,7 +51,7 @@ export default function FormTaskUpdate({
 
   return (
     <form
-      inert={formConfig?.disableField?.form}
+      inert={formConfig?.disable?.form}
       action={formAction}
       id={formConfig?.formId}
     >

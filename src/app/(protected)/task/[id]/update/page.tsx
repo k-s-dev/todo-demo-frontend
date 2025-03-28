@@ -26,9 +26,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const category = userDataConfig.categories.find(
     (obj) => obj.id === task?.category,
   );
-  const project = projects.find(
-    (obj) => obj.id === task?.project,
-  );
+  const project = projects.find((obj) => obj.id === task?.project);
 
   if (!task || !workspace || !category) {
     notFound();
@@ -36,9 +34,11 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   const formConfig: TaskFormConfig = {
     userDataConfig,
-    workspace,
-    category,
-    project,
+    selection: {
+      workspace,
+      category,
+      project,
+    },
   };
 
   return (
