@@ -51,9 +51,9 @@ export default async function Navbar() {
             <ModeToggle />
           </section>
           <Auth className="flex justify-between gap-4 sm:hidden" />
-          <article className="hidden sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:justify-end sm:gap-4">
+          <article className="hidden sm:flex sm:flex-wrap sm:items-center sm:justify-end sm:gap-4">
             <ModeToggle />
-            <Auth className="sm:flex sm:justify-around sm:gap-4" />
+            <Auth className="sm:flex sm:justify-between sm:gap-4" />
           </article>
         </SignedOut>
       </div>

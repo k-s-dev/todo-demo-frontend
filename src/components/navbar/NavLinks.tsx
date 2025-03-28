@@ -48,7 +48,7 @@ export default function NavLinks({ className }: { className?: string }) {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>
+              <NavigationMenuTrigger className="bg-slate-100 dark:bg-slate-400">
                 <FaBars />
               </NavigationMenuTrigger>
 
