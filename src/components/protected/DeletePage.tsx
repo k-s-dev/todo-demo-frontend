@@ -9,11 +9,13 @@ export default function DeletePage({
   formState,
   formId = "form-delete",
   disabled = false,
+  isModal,
 }: {
   formAction: string | (() => void);
   formState: FormStateType;
   formId?: string;
   disabled?: boolean;
+  isModal?: boolean;
 }) {
   const router = useRouter();
 
@@ -31,9 +33,11 @@ export default function DeletePage({
             Confirm
           </Button>
         </form>
-        <Button variant="outline" onClick={() => router.back()}>
-          Cancel
-        </Button>
+        {!isModal && (
+          <Button variant="outline" onClick={() => router.back()}>
+            Cancel
+          </Button>
+        )}
       </div>
       <p className="my-8 text-xl text-slate-700">{formState.message}</p>
     </>

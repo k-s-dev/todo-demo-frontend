@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import { Workspace } from "../../definitions";
 import { deleteWorkspaces } from "../../actions/deleteWorkspace";
 import { Separator } from "@/components/ui/separator";
+import WorkspaceUpdateModal from "../modals/UpdateModal";
+import WorkspaceDeleteModal from "../modals/DeleteModal";
 
 export default function WorkspaceList({
   userId,
@@ -94,10 +96,7 @@ function WorkspaceListContent({
         </Button>
       </section>
       <Separator />
-      <section
-        id="workspace-list"
-        className="my-8 flex flex-col gap-2"
-      >
+      <section id="workspace-list" className="my-8 flex flex-col gap-2">
         {userDataConfig.workspaces.map((ws) => (
           <article
             key={ws.id}
@@ -120,16 +119,12 @@ function WorkspaceListContent({
                 {ws.name}
               </Button>
             </Link>
-            <Link href={`/workspace/${ws.id}/update`} className="w-full">
-              <Button variant="outline" className="w-full">
-                Edit
-              </Button>
-            </Link>
-            <Link href={`/workspace/${ws.id}/delete`} className="w-full">
-              <Button variant="outline" className="w-full">
-                Delete
-              </Button>
-            </Link>
+            <WorkspaceUpdateModal
+              userId={userId}
+              workspace={ws}
+              workspaces={userDataConfig.workspaces}
+            />
+            <WorkspaceDeleteModal userId={userId} workspace={ws} />
           </article>
         ))}
       </section>

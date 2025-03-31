@@ -10,11 +10,13 @@ export default function FormWorkspaceDelete({
   workspace,
   disabled = false,
   formId = "form-workspace-delete",
+  isModal = true,
 }: {
   userId: string;
   workspace: Workspace;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, workspace);
 
@@ -35,6 +37,7 @@ export default function FormWorkspaceDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );

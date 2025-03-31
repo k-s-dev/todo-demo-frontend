@@ -39,7 +39,11 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   return (
     <>
-      <WorkspaceDetailHeader workspace={workspace} />
+      <WorkspaceDetailHeader
+        userId={userId}
+        workspace={workspace}
+        workspaces={workspaces}
+      />
       <Separator className="h-2!" />
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
         <PriorityTable priorities={priorities} workspaceId={workspace.id} />

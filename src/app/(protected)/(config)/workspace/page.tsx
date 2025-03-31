@@ -14,7 +14,10 @@ export default async function Page() {
 
   return (
     <div className="mx-auto my-2 grid grid-cols-1 px-2 w-full">
-      <WorkspaceListHeader />
+      <WorkspaceListHeader
+        userId={userId}
+        workspaces={userDataConfig.workspaces}
+      />
       <Separator />
       <WorkspaceList userId={userId} userDataConfig={userDataConfig} />
     </div>
