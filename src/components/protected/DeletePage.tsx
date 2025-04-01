@@ -35,7 +35,7 @@ export default function DeletePage({
           </Button>
         </form>
         {isModal && (
-          <DialogClose>
+          <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
         )}
