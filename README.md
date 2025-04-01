@@ -15,3 +15,15 @@
 - backend api: [django/django rest framework](https://www.django-rest-framework.org/)
 - auth: [clerk](https://clerk.com/)
 - deployment: [vercel](https://vercel.com/home)
+
+# Roadmap
+
+- v-0.0.0: app with basic functionality released
+- v-0.0.1
+  - [x] modals for small forms (workspace, category, priority, status, tag)
+  - [ ] implement search
+  - [ ] improve project task tables with sort, possibly search on fields
+  - [ ] review state management, if redux is needed?
+  - [ ] nextjs
+    - [ ] performance metrics and optimizations
+    - [ ] testing
