@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import { fetchUserDataConfig } from "@/data/apiUserData";
-import CategoryTable from "@/data/category/Table";
+import CategoryTable from "@/data/category/components/list/Table";
 import PriorityTable from "@/data/priority/components/list/Table";
 import StatusTable from "@/data/status/components/list/Table";
 import TagTable from "@/data/tag/Table";
@@ -58,7 +58,12 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           workspaceId={workspace.id}
           statuses={statuses}
         />
-        <CategoryTable categories={categories} workspaceId={workspace.id} />
+        <CategoryTable
+          userId={userId}
+          workspaces={workspaces}
+          workspaceId={workspace.id}
+          categories={categories}
+        />
         <TagTable tags={tags} workspaceId={workspace.id} />
       </section>
     </>
