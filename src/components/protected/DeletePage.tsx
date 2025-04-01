@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { FormStateType } from "@/lib/types";
+import { DialogClose } from "../ui/dialog";
 
 export default function DeletePage({
   formAction,
@@ -33,6 +34,11 @@ export default function DeletePage({
             Confirm
           </Button>
         </form>
+        {isModal && (
+          <DialogClose>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+        )}
         {!isModal && (
           <Button variant="outline" onClick={() => router.back()}>
             Cancel
