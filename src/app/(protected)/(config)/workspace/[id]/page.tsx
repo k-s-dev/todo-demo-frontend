@@ -3,7 +3,7 @@ import { fetchUserDataConfig } from "@/data/apiUserData";
 import CategoryTable from "@/data/category/components/list/Table";
 import PriorityTable from "@/data/priority/components/list/Table";
 import StatusTable from "@/data/status/components/list/Table";
-import TagTable from "@/data/tag/Table";
+import TagTable from "@/data/tag/components/list/Table";
 import WorkspaceDetailHeader from "@/data/workspace/components/detail/Header";
 import { auth } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
@@ -64,7 +64,12 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           workspaceId={workspace.id}
           categories={categories}
         />
-        <TagTable tags={tags} workspaceId={workspace.id} />
+        <TagTable
+          userId={userId}
+          workspaces={workspaces}
+          workspaceId={workspace.id}
+          tags={tags}
+        />
       </section>
     </>
   );
