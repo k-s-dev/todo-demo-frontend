@@ -1,7 +1,6 @@
 "use client";
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Priority } from "../../definitions";
 import { Workspace } from "@/data/workspace/definitions";
@@ -95,11 +94,7 @@ function Row({
 }) {
   return (
     <TableRow key={priority.id}>
-      <TableCell>
-        <Link href={`/priority/${priority.id}`} className="underline">
-          {priority.name}
-        </Link>
-      </TableCell>
+      <TableCell className="">{priority.name}</TableCell>
       <TableCell align="right">
         <FormModal titleButton="Edit" titleModal="Edit Priority">
           <FormPriorityUpdate

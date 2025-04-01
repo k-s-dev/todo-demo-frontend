@@ -1,7 +1,6 @@
 "use client";
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Tag } from "../../definitions";
 import { Workspace } from "@/data/workspace/definitions";
@@ -90,11 +89,7 @@ function Row({
 }) {
   return (
     <TableRow key={tag.id}>
-      <TableCell>
-        <Link href={`/tag/${tag.id}`} className="underline">
-          {tag.name}
-        </Link>
-      </TableCell>
+      <TableCell className="">{tag.name}</TableCell>
       <TableCell align="right">
         <FormModal titleButton="Edit" titleModal="Edit Tag">
           <FormTagUpdate userId={userId} tag={tag} workspaces={workspaces} />

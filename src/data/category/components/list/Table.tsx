@@ -1,7 +1,6 @@
 "use client";
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Category } from "../../definitions";
 import { Workspace } from "@/data/workspace/definitions";
@@ -95,11 +94,7 @@ function Row({
 }) {
   return (
     <TableRow key={category.id}>
-      <TableCell>
-        <Link href={`/category/${category.id}`} className="underline">
-          {category.name}
-        </Link>
-      </TableCell>
+      <TableCell className="">{category.name}</TableCell>
       <TableCell align="right">
         <FormModal titleButton="Edit" titleModal="Edit Category">
           <FormCategoryUpdate
