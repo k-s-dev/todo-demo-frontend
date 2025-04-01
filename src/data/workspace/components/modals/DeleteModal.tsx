@@ -1,13 +1,6 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Workspace } from "../../definitions";
 import FormWorkspaceDelete from "../../delete/Form";
+import FormModal from "@/data/FormModal";
 
 export default function WorkspaceDeleteModal({
   userId,
@@ -21,16 +14,8 @@ export default function WorkspaceDeleteModal({
   titleModal?: string;
 }) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">{titleButton}</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>{titleModal}</DialogTitle>
-        </DialogHeader>
-        <FormWorkspaceDelete userId={userId} workspace={workspace} />
-      </DialogContent>
-    </Dialog>
+    <FormModal titleButton={titleButton} titleModal={titleModal}>
+      <FormWorkspaceDelete userId={userId} workspace={workspace} />
+    </FormModal>
   );
 }
