@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { fetchUserDataConfig } from "@/data/apiUserData";
 import CategoryTable from "@/data/category/Table";
 import PriorityTable from "@/data/priority/components/list/Table";
-import StatusTable from "@/data/status/Table";
+import StatusTable from "@/data/status/components/list/Table";
 import TagTable from "@/data/tag/Table";
 import WorkspaceDetailHeader from "@/data/workspace/components/detail/Header";
 import { auth } from "@clerk/nextjs/server";
@@ -48,11 +48,16 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
         <PriorityTable
           userId={userId}
-          priorities={priorities}
           workspaceId={workspace.id}
           workspaces={workspaces}
+          priorities={priorities}
         />
-        <StatusTable statuses={statuses} workspaceId={workspace.id} />
+        <StatusTable
+          userId={userId}
+          workspaces={workspaces}
+          workspaceId={workspace.id}
+          statuses={statuses}
+        />
         <CategoryTable categories={categories} workspaceId={workspace.id} />
         <TagTable tags={tags} workspaceId={workspace.id} />
       </section>
