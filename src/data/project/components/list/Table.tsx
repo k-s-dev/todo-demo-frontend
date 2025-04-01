@@ -21,6 +21,8 @@ import { Priority as Priority } from "@/data/priority/definitions";
 import { formatDate } from "@/lib/format";
 import { updateProjectVisibility } from "../../actions/update";
 import { Checkbox } from "@/components/ui/checkbox";
+import FormModal from "@/data/FormModal";
+import FormProjectDelete from "../../delete/Form";
 
 export default function ProjectTable({
   userId,
@@ -178,9 +180,13 @@ function ProjectTableRow({
           </Link>
         </TableCell>
         <TableCell>
-          <Link href={`/project/${project.id}/delete`}>
-            <FaTrash className="text-amber-800" />
-          </Link>
+          <FormModal
+            titleButton=""
+            titleModal="Delete Project"
+            triggerComponent={<FaTrash />}
+          >
+            <FormProjectDelete userId={userId} project={project} />
+          </FormModal>
         </TableCell>
         <TableCell>
           <Checkbox

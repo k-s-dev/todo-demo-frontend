@@ -3,17 +3,20 @@
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { FormStateType } from "@/lib/types";
+import { DialogClose } from "../ui/dialog";
 
 export default function DeletePage({
   formAction,
   formState,
   formId = "form-delete",
   disabled = false,
+  isModal,
 }: {
   formAction: string | (() => void);
   formState: FormStateType;
   formId?: string;
   disabled?: boolean;
+  isModal?: boolean;
 }) {
   const router = useRouter();
 
@@ -31,9 +34,16 @@ export default function DeletePage({
             Confirm
           </Button>
         </form>
-        <Button variant="outline" onClick={() => router.back()}>
-          Cancel
-        </Button>
+        {isModal && (
+          <DialogClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DialogClose>
+        )}
+        {!isModal && (
+          <Button variant="outline" onClick={() => router.back()}>
+            Cancel
+          </Button>
+        )}
       </div>
       <p className="my-8 text-xl text-slate-700">{formState.message}</p>
     </>

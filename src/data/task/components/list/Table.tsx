@@ -21,6 +21,8 @@ import { Priority as Priority } from "@/data/priority/definitions";
 import { formatDate } from "@/lib/format";
 import { updateTaskVisibility } from "../../actions/update";
 import { Checkbox } from "@/components/ui/checkbox";
+import FormTaskDelete from "../../delete/Form";
+import FormModal from "@/data/FormModal";
 
 export default function TaskTable({
   userId,
@@ -34,8 +36,7 @@ export default function TaskTable({
   const sidebarContext = useSidebarContext();
   const initialTasks = tasks.filter((pr) => pr.is_visible);
 
-  const [tasksState, setTasksState] =
-    useState<Task[]>(initialTasks);
+  const [tasksState, setTasksState] = useState<Task[]>(initialTasks);
 
   useEffect(() => {
     let filteredTasks = tasks;
@@ -178,9 +179,13 @@ function TaskTableRow({
           </Link>
         </TableCell>
         <TableCell>
-          <Link href={`/task/${task.id}/delete`}>
-            <FaTrash className="text-amber-800" />
-          </Link>
+          <FormModal
+            titleButton=""
+            titleModal="Delete Project"
+            triggerComponent={<FaTrash />}
+          >
+            <FormTaskDelete userId={userId} task={task} />
+          </FormModal>
         </TableCell>
         <TableCell>
           <Checkbox

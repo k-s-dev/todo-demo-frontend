@@ -10,11 +10,13 @@ export default function FormTagDelete({
   tag,
   disabled = false,
   formId = "form-tag-delete",
+  isModal = true,
 }: {
   userId: string;
   tag: Tag;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, tag);
 
@@ -35,6 +37,7 @@ export default function FormTagDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );

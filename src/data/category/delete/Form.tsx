@@ -10,11 +10,13 @@ export default function FormCategoryDelete({
   category,
   disabled = false,
   formId = "form-category-delete",
+  isModal = true,
 }: {
   userId: string;
   category: Category;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, category);
 
@@ -35,6 +37,7 @@ export default function FormCategoryDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );

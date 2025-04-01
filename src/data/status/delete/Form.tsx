@@ -10,11 +10,13 @@ export default function FormStatusDelete({
   status,
   disabled = false,
   formId = "form-status-delete",
+  isModal = true,
 }: {
   userId: string;
   status: Status;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, status);
 
@@ -35,6 +37,7 @@ export default function FormStatusDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );
