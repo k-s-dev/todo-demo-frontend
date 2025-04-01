@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { fetchUserDataConfig } from "@/data/apiUserData";
 import CategoryTable from "@/data/category/Table";
-import PriorityTable from "@/data/priority/Table";
+import PriorityTable from "@/data/priority/components/list/Table";
 import StatusTable from "@/data/status/Table";
 import TagTable from "@/data/tag/Table";
 import WorkspaceDetailHeader from "@/data/workspace/components/detail/Header";
@@ -46,7 +46,12 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       />
       <Separator className="h-2!" />
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-        <PriorityTable priorities={priorities} workspaceId={workspace.id} />
+        <PriorityTable
+          userId={userId}
+          priorities={priorities}
+          workspaceId={workspace.id}
+          workspaces={workspaces}
+        />
         <StatusTable statuses={statuses} workspaceId={workspace.id} />
         <CategoryTable categories={categories} workspaceId={workspace.id} />
         <TagTable tags={tags} workspaceId={workspace.id} />

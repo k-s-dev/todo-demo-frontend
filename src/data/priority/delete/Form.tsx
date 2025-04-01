@@ -10,11 +10,13 @@ export default function FormPriorityDelete({
   priority,
   disabled = false,
   formId = "form-priority-delete",
+  isModal = true,
 }: {
   userId: string;
   priority: Priority;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, priority);
 
@@ -35,6 +37,7 @@ export default function FormPriorityDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );
