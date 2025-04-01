@@ -11,5 +11,11 @@ export default async function ProjectList({
   userDataConfig: UserDataConfig;
 }) {
   const projects = await fetchAllUserObjects<Project>(userId, "project");
-  return <ProjectTable userId={userId} userDataConfig={userDataConfig} projects={projects} />;
+  return (
+    <ProjectTable
+      userId={userId}
+      userDataConfig={userDataConfig}
+      projects={projects}
+    />
+  );
 }
