@@ -10,11 +10,13 @@ export default function FormProjectDelete({
   project,
   disabled = false,
   formId = "form-project-delete",
+  isModal = true,
 }: {
   userId: string;
   project: Project;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, project);
 
@@ -36,6 +38,7 @@ export default function FormProjectDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );

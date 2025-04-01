@@ -10,11 +10,13 @@ export default function FormTaskDelete({
   task,
   disabled = false,
   formId = "form-task-delete",
+  isModal = true,
 }: {
   userId: string;
   task: Task;
   disabled?: boolean;
   formId?: string;
+  isModal?: boolean;
 }) {
   const formActionPartial = action.bind(null, userId, task);
 
@@ -36,6 +38,7 @@ export default function FormTaskDelete({
         formState={formState}
         formId={formId}
         disabled={disabled}
+        isModal={isModal}
       />
     </>
   );
