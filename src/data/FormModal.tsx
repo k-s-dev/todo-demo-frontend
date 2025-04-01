@@ -11,18 +11,25 @@ export default function FormModal({
   titleButton,
   titleModal,
   classNameContent = "sm:max-w-3xl",
+  triggerComponent,
   children,
 }: {
   titleButton?: string;
   titleModal?: string;
   classNameContent?: string;
+  triggerComponent?: React.ReactNode;
   children?: React.ReactNode;
 }) {
+  let trigger;
+  if (triggerComponent) {
+    trigger = triggerComponent;
+  } else {
+    trigger = <Button variant="outline">{titleButton}</Button>;
+  }
+
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">{titleButton}</Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className={classNameContent}>
         <DialogHeader>
           <DialogTitle>{titleModal}</DialogTitle>
