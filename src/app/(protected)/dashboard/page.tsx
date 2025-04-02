@@ -9,10 +9,19 @@ import { FaPlus } from "react-icons/fa6";
 import ProjectList from "@/data/project/components/list/List";
 import TaskList from "@/data/task/components/list/List";
 
-export default async function page() {
+export default async function page({
+  searchParams,
+}: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
   const { userId } = await auth();
   if (!userId) redirect("/");
   const userDataConfig = await fetchUserDataConfig(userId);
+  const params = await searchParams;
+  const query = params?.query || "";
 
   return (
     <>
@@ -28,7 +37,11 @@ export default async function page() {
                 </Button>
               </Link>
             </header>
-            <ProjectList userId={userId} userDataConfig={userDataConfig} />
+            <ProjectList
+              userId={userId}
+              userDataConfig={userDataConfig}
+              query={query}
+            />
           </section>
           <Separator className="h-2! my-4" />
           <section>
@@ -40,7 +53,11 @@ export default async function page() {
                 </Button>
               </Link>
             </header>
-            <TaskList userId={userId} userDataConfig={userDataConfig} />
+            <TaskList
+              userId={userId}
+              userDataConfig={userDataConfig}
+              query={query}
+            />
           </section>
         </main>
       </div>

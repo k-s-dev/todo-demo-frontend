@@ -28,10 +28,12 @@ export default function ProjectTable({
   userId,
   userDataConfig,
   projects,
+  query,
 }: {
   userId: string;
   userDataConfig: UserDataConfig;
   projects: Project[];
+  query?: string;
 }) {
   const sidebarContext = useSidebarContext();
   const initialProjects = projects.filter((pr) => pr.is_visible);
@@ -69,8 +71,17 @@ export default function ProjectTable({
       sidebarContext.state.tag,
       "tags",
     );
+    if (query && query.length > 0) {
+      console.log(query);
+      filteredProjects = filteredProjects.filter((obj) => {
+        return (
+          obj.title.toLowerCase().includes(query.toLowerCase()) ||
+          obj.detail?.toLowerCase().includes(query)
+        );
+      });
+    }
     setProjectsState([...filteredProjects]);
-  }, [projects, sidebarContext]);
+  }, [projects, sidebarContext, query]);
 
   if (!projectsState || projectsState.length === 0) {
     return <p>There are no visible projects. Check archive if needed.</p>;

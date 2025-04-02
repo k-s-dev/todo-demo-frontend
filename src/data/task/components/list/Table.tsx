@@ -28,10 +28,12 @@ export default function TaskTable({
   userId,
   userDataConfig,
   tasks,
+  query,
 }: {
   userId: string;
   userDataConfig: UserDataConfig;
   tasks: Task[];
+  query: string;
 }) {
   const sidebarContext = useSidebarContext();
   const initialTasks = tasks.filter((pr) => pr.is_visible);
@@ -68,8 +70,17 @@ export default function TaskTable({
       sidebarContext.state.tag,
       "tags",
     );
+    if (query && query.length > 0) {
+      console.log(query);
+      filteredTasks = filteredTasks.filter((obj) => {
+        return (
+          obj.title.toLowerCase().includes(query.toLowerCase()) ||
+          obj.detail?.toLowerCase().includes(query)
+        );
+      });
+    }
     setTasksState([...filteredTasks]);
-  }, [tasks, sidebarContext]);
+  }, [tasks, sidebarContext, query]);
 
   if (!tasksState || tasksState.length === 0) {
     return <p>There are no visible tasks. Check archive if needed.</p>;

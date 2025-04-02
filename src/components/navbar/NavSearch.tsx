@@ -10,20 +10,20 @@ export const NavSearch: React.FC<InputProps> = ({ className, ...rest }) => {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const [search, setSearch] = useState(
-    searchParams.get("search")?.toString() || "",
+    searchParams.get("query")?.toString() || "",
   );
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
     if (value) {
-      params.set("search", value);
+      params.set("query", value);
     } else {
-      params.delete("search");
+      params.delete("query");
     }
-    replace(`/products?${params.toString()}`);
+    replace(`/dashboard?${params.toString()}`);
   }, 500);
 
   useEffect(() => {
-    if (!searchParams.get("search")) {
+    if (!searchParams.get("query")) {
       setSearch("");
     }
   }, [searchParams]);

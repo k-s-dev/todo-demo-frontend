@@ -6,9 +6,11 @@ import { Project } from "../../definitions";
 export default async function ProjectList({
   userId,
   userDataConfig,
+  query,
 }: {
   userId: string;
   userDataConfig: UserDataConfig;
+  query?: string;
 }) {
   const projects = await fetchAllUserObjects<Project>(userId, "project");
   return (
@@ -16,6 +18,7 @@ export default async function ProjectList({
       userId={userId}
       userDataConfig={userDataConfig}
       projects={projects}
+      query={query}
     />
   );
 }

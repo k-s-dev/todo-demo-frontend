@@ -6,10 +6,19 @@ import { Task } from "../../definitions";
 export default async function TaskList({
   userId,
   userDataConfig,
+  query,
 }: {
   userId: string;
   userDataConfig: UserDataConfig;
+  query: string;
 }) {
   const tasks = await fetchAllUserObjects<Task>(userId, "task");
-  return <TaskTable userId={userId} userDataConfig={userDataConfig} tasks={tasks} />;
+  return (
+    <TaskTable
+      userId={userId}
+      userDataConfig={userDataConfig}
+      tasks={tasks}
+      query={query}
+    />
+  );
 }
