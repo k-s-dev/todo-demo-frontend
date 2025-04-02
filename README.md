@@ -20,7 +20,7 @@
 
 - [x] app with basic functionality released
 - [x] modals for small forms (workspace, category, priority, status, tag)
-- [ ] change git workflow to feature branch workflow
+- [x] change git workflow to feature branch workflow
 - [ ] implement search
 - [ ] improve project task tables with sort, possibly search on fields
 - [ ] review state management, if redux is needed?
