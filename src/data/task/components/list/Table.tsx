@@ -1,5 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import { FaPencil, FaTrash } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+
 import {
   Table,
   TableBody,
@@ -8,10 +12,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Link from "next/link";
-import { FaPencil, FaTrash } from "react-icons/fa6";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useSidebarContext } from "@/lib/store/sidebarContext";
-import { useEffect, useState } from "react";
 import { UserDataConfig } from "@/lib/types";
 import { Task } from "@/data/task/definitions";
 import { Workspace } from "@/data/workspace/definitions";
@@ -20,7 +22,6 @@ import { Status as Status } from "@/data/status/definitions";
 import { Priority as Priority } from "@/data/priority/definitions";
 import { formatDate } from "@/lib/format";
 import { updateTaskVisibility } from "../../actions/update";
-import { Checkbox } from "@/components/ui/checkbox";
 import FormTaskDelete from "../../delete/Form";
 import FormModal from "@/data/FormModal";
 
@@ -97,7 +98,7 @@ export default function TaskTable({
             <TableHead>Category</TableHead>
             <TableHead className="w-[10%]">Status</TableHead>
             <TableHead>Priority</TableHead>
-            <TableHead className="w-[15%]">Due</TableHead>
+            <TableHead className="w-[10%]">Due</TableHead>
             <TableHead>Edit</TableHead>
             <TableHead>Delete</TableHead>
             <TableHead>Toggle Visibility</TableHead>

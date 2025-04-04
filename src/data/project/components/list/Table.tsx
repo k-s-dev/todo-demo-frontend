@@ -98,7 +98,7 @@ export default function ProjectTable({
             <TableHead>Category</TableHead>
             <TableHead className="w-[10%]">Status</TableHead>
             <TableHead>Priority</TableHead>
-            <TableHead className="w-[15%]">Due</TableHead>
+            <TableHead className="w-[10%]">Due</TableHead>
             <TableHead>Edit</TableHead>
             <TableHead>Delete</TableHead>
             <TableHead>Toggle Visibility</TableHead>
