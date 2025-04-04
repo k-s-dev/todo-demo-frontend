@@ -1,11 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import { FaPlus } from "react-icons/fa6";
+
 import Sidebar from "@/components/protected/sidebar/Sidebar";
 import { Separator } from "@/components/ui/separator";
 import { fetchUserDataConfig } from "@/data/apiUserData";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { FaPlus } from "react-icons/fa6";
 import ProjectList from "@/data/project/components/list/List";
 import TaskList from "@/data/task/components/list/List";
 
