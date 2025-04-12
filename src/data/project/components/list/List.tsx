@@ -1,7 +1,7 @@
 import { UserDataConfig } from "@/lib/types";
-import ProjectTable from "./Table";
 import { fetchAllUserObjects } from "@/data/apiUserData";
 import { Project } from "../../definitions";
+import ProjectTable from "./Table";
 
 export default async function ProjectList({
   userId,
@@ -13,12 +13,15 @@ export default async function ProjectList({
   query?: string;
 }) {
   const projects = await fetchAllUserObjects<Project>(userId, "project");
+
   return (
-    <ProjectTable
-      userId={userId}
-      userDataConfig={userDataConfig}
-      projects={projects}
-      query={query}
-    />
+    <div className="container">
+      <ProjectTable
+        userId={userId}
+        userDataConfig={userDataConfig}
+        projects={projects}
+        query={query}
+      />
+    </div>
   );
 }

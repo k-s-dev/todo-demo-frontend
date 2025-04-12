@@ -1,6 +1,10 @@
 import { FormConfig, FormFieldsIndicator } from "@/lib/types";
 import { z } from "zod";
 import { Project } from "../project/definitions";
+import { Workspace } from "../workspace/definitions";
+import { Category } from "../category/definitions";
+import { Status } from "../status/definitions";
+import { Priority } from "../priority/definitions";
 
 export const TaskFormSchema = z.object({
   title: z
@@ -13,7 +17,7 @@ export const TaskFormSchema = z.object({
   detail: z.string().optional(),
   is_visible: z.preprocess(
     (arg) => (arg === "on" ? true : false),
-    z.boolean().default(true).optional(),
+    z.boolean().default(true),
   ),
 
   parent: z.coerce.number().int().optional(),
@@ -90,3 +94,14 @@ export type TaskFormState = {
 export type TaskFormConfig = FormConfig<FormFieldsIndicator<TaskForm>> & {
   project?: Project;
 };
+
+export interface TaskTableData {
+  userId: string;
+  task: Task;
+  parent?: Task;
+  project: Project;
+  workspace: Workspace;
+  category: Category;
+  status?: Status;
+  priority?: Priority;
+}

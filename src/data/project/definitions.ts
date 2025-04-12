@@ -1,5 +1,9 @@
 import { FormConfig, FormFieldsIndicator } from "@/lib/types";
 import { z } from "zod";
+import { Priority } from "../priority/definitions";
+import { Status } from "../status/definitions";
+import { Workspace } from "../workspace/definitions";
+import { Category } from "../category/definitions";
 
 export const ProjectFormSchema = z.object({
   title: z
@@ -56,8 +60,7 @@ export const ProjectFormSchema = z.object({
   ),
 });
 
-export const ProjectUpdateActionSchema = ProjectFormSchema.partial()
-
+export const ProjectUpdateActionSchema = ProjectFormSchema.partial();
 export const ProjectApiSchema = ProjectFormSchema;
 
 export const ProjectSchema = ProjectApiSchema.extend({
@@ -73,6 +76,16 @@ export type ProjectForm = z.infer<typeof ProjectFormSchema>;
 export type ProjectUpdateData = z.infer<typeof ProjectUpdateActionSchema>;
 export type ProjectApi = z.infer<typeof ProjectApiSchema>;
 export type ProjectFormKeys = z.infer<typeof ProjectFormKeysSchema>;
+
+export interface ProjectTableData {
+  userId: string;
+  project: Project;
+  parent?: Project;
+  workspace: Workspace;
+  category: Category;
+  status?: Status;
+  priority?: Priority;
+}
 
 export const ProjectFormDataSchema = ProjectFormSchema.partial();
 export type ProjectFormData = z.infer<typeof ProjectFormDataSchema>;

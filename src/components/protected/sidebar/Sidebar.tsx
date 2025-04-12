@@ -41,7 +41,7 @@ export default function Sidebar({ userDataConfig }: PropsType) {
 
 export function SidebarContent({ userDataConfig }: PropsType) {
   return (
-    <aside className="border-r mx-4 px-2">
+    <aside className="border-r me-4 px-4 w-full">
       <div className="flex flex-col gap-2 my-2">
         <VisibilityToggle />
         <Separator />

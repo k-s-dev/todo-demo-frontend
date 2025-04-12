@@ -23,6 +23,7 @@ export async function updateTaskVisibility(
     is_visible: task.is_visible,
     workspace: task.workspace,
     category: task.category,
+    project: task.project,
     priority: task.priority,
     status: task.status,
     tags: task.tags,
