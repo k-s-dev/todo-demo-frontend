@@ -23,7 +23,6 @@
 - [x] change git workflow to feature branch workflow
 - [x] implement search
 - [x] improve project task tables with sort, possibly search on fields
-- [ ] review state management, if redux is needed?
 - [ ] nextjs
   - [ ] performance metrics and optimizations
   - [ ] testing
