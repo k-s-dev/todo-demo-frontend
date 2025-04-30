@@ -16,13 +16,3 @@
 - auth: [clerk](https://clerk.com/)
 - deployment: [vercel](https://vercel.com/home)
 
-# Roadmap
-
-- [x] app with basic functionality released
-- [x] modals for small forms (workspace, category, priority, status, tag)
-- [x] change git workflow to feature branch workflow
-- [x] implement search
-- [x] improve project task tables with sort, possibly search on fields
-- [ ] nextjs
-  - [ ] performance metrics and optimizations
-  - [ ] testing
